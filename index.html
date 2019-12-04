@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>The Evolution of Music</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <h1>The Evolution of Music</h1>
+    <div id="container">
+    </div>
+    <div id="checkboxbox">
+        <input type="checkbox" id="chkAcousticness">Acousticness<br>
+        <input type="checkbox" id="chkDanceability">Danceability<br>
+        <input type="checkbox" id="chkEnergy">Energy<br>
+        <!-- <input type="checkbox" id="chkInstrumentalness">Instrumentalness<br> -->
+        <input type="checkbox" id="chkLiveness">Liveness<br>
+        <!-- <input type="checkbox" id="chkLoudness">Loudness<br> -->
+        <input type="checkbox" id="chkSpeechiness">Speechiness<br>
+        <!-- <input type="checkbox" id="chkKey">Key<br>
+        <input type="checkbox" id="chkTimeSignature">Time Signature<br> -->
+        <input type="checkbox" id="chkValence">Valence<br>
+      </div>
+
+
+
+
+    </div>
+    <div id="checkboxcontrolsbox">
+      <button type="button" id="checkAllButton" onclick="checkAll()">Check All</button>
+      <button type="button" id="uncheckAllButton" onclick="uncheckAll()">Uncheck All</button>
+    </div>
+
+      <button type="button" id="loadButton" onclick="reload()">reload</button>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="extraControls.js"></script>
+
+    <br></br>
+    <h2>About</h2>
+    <p>The dataset includes every album that was on the Billboard 200 from 1/5/1963 to 1/19/2019. The goal of this project was to identify trends in the Music Industry over the last 50+ years. To help facilitate this goal, historical images have been overlaid below the x-axis corresponding to each year. Each year has that year’s Time Magazine Person of the Year cover as well as the cover of that year’s Album of the Year.
+    </p>
+    <br></br>
+    <p>Attributes are color-coded between the graph and the checkboxes.
+    </p>
+    <br></br>
+    <p>Hover over each attribute to see an explanation and the track with the highest rating in each attribute.
+    </p>
+    <br></br>
+    <p>Each attribute was gathered on a different scale so 0 = the lowest point and 100 = the highest point of each attribute.
+    </p>
+    <br></br>
+  </body>
+</html>
