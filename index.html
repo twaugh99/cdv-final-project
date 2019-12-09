@@ -5,51 +5,99 @@
     <title>The Evolution of Music</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+
   </head>
   <body>
-    <h1>The Evolution of Music</h1>
-    <div id="container">
-    </div>
-    <div id="checkboxbox">
-        <input type="checkbox" id="chkAcousticness">Acousticness<br>
-        <input type="checkbox" id="chkDanceability">Danceability<br>
-        <input type="checkbox" id="chkEnergy">Energy<br>
-        <!-- <input type="checkbox" id="chkInstrumentalness">Instrumentalness<br> -->
-        <input type="checkbox" id="chkLiveness">Liveness<br>
-        <!-- <input type="checkbox" id="chkLoudness">Loudness<br> -->
-        <input type="checkbox" id="chkSpeechiness">Speechiness<br>
-        <!-- <input type="checkbox" id="chkKey">Key<br>
-        <input type="checkbox" id="chkTimeSignature">Time Signature<br> -->
-        <input type="checkbox" id="chkValence">Valence<br>
+
+    <div id="topSection">
+      <h1>The Evolution of Music</h1>
+
+        <br></br>
+
+        <div id="container">
+        </div>
+
+        <br></br>
+
+        <div id="checkboxbox">
+          <p id="acousticnessText">
+            <input type="checkbox" id="chkAcousticness">Acousticness<br>
+          </p>
+          <p id="danceabilityText">
+            <input type="checkbox" id="chkDanceability">Danceability<br>
+          </p>
+          <p id="energyText">
+            <input type="checkbox" id="chkEnergy">Energy<br>
+          </p>
+          <p id="livenessText">
+            <input type="checkbox" id="chkLiveness">Liveness<br>
+          </p>
+          <p id="speechinessText">
+            <input type="checkbox" id="chkSpeechiness">Speechiness<br>
+          </p>
+          <p id="valenceText">
+            <input type="checkbox" id="chkValence">Valence<br>
+          </p>
+          <p id="tempoText">
+            <input type="checkbox" id="chkTempo">Tempo<br>
+          </p>
+          <p id="durationText">
+            <input type="checkbox" id="chkDuration">Duration<br>
+          </p>
+
+        </div>
       </div>
-
-
-
-
     </div>
-    <div id="checkboxcontrolsbox">
-      <button type="button" id="checkAllButton" onclick="checkAll()">Check All</button>
-      <button type="button" id="uncheckAllButton" onclick="uncheckAll()">Uncheck All</button>
-    </div>
-
-      <button type="button" id="loadButton" onclick="reload()">reload</button>
 
     <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="extraControls.js"></script>
 
     <br></br>
-    <h2>About</h2>
-    <p>The dataset includes every album that was on the Billboard 200 from 1/5/1963 to 1/19/2019. The goal of this project was to identify trends in the Music Industry over the last 50+ years. To help facilitate this goal, historical images have been overlaid below the x-axis corresponding to each year. Each year has that year’s Time Magazine Person of the Year cover as well as the cover of that year’s Album of the Year.
-    </p>
+
+    <div id="attributesBox">
+      <h2>Attributes:</h2>
+      <h3 id="acousticnessExplanation">Acousticness</h3>
+      <h4 id="description">The higher the value, the more acoustic the song is.</h4>
+
+      <h3 id="danceabilityExplanation">Danceability</h3>
+      <h4 id="description">The higher the value, the easier it is to dance to this song.</h4>
+
+      <h3 id="energyExplanation">Energy</h3>
+      <h4 id="description">The higher the value, the more energetic the song is.</h4>
+
+      <h3 id="livenessExplanation">Liveness</h3>
+      <h4 id="description">The more digitally produced a song is, the lower the value.</h4>
+
+      <h3 id="speechinessExplanation">Speechiness</h3>
+      <h4 id="description">The higher the value, the more the song is based on speech.</h4>
+
+      <h3 id="valenceExplanation">Valence</h3>
+      <h4 id="description">The higher the value, the more positive the mood.</h4>
+
+      <h3 id="tempoExplanation">Tempo</h3>
+      <h4 id="description">The tempo of the song.</h4>
+
+      <h3 id="durationExplanation">Duration</h3>
+      <h4 id="description">The duration of the song.</h4>
+    </div>
+
     <br></br>
-    <p>Attributes are color-coded between the graph and the checkboxes.
-    </p>
     <br></br>
-    <p>Hover over each attribute to see an explanation and the track with the highest rating in each attribute.
-    </p>
-    <br></br>
-    <p>Each attribute was gathered on a different scale so 0 = the lowest point and 100 = the highest point of each attribute.
-    </p>
-    <br></br>
+
+
+    <div id="aboutSection">
+      <h2>About:</h2>
+        <h4>The goal of this project was to identify trends in music over the last 50+ years</h4>
+        <h4>The Data for this project was taken from a dataset of 914,000 rows containing all
+          albums and tracks in the Billboard 200 from 1/5/1963 to 1/19/2019.
+          <a target="_blank" href="https://components.one/datasets/billboard-200/">Here</a> is a link to the dataset.
+          This dataset was too large for a browser to load so the dataset was
+          condensed into the top 10 songs of every week in the original period of time.
+          The dataset also includes metadata for individual tracks gathered by
+          <a target="_blank" href="https://en.wikipedia.org/wiki/The_Echo_Nest">Spotify’s Echo Nest. </a>
+          These attributes are the basis for the organization of this project.
+        </h4>
+
+    </div>
+
   </body>
 </html>

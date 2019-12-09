@@ -1,40 +1,45 @@
 body{
-  background-color: #b3cde0;
+  background-color: #4a708b;
 }
 
 h1{
-  color: 	#011f4b;
+  color: 	#ffffff;
   text-align: center;
-  word-spacing: 10px;
+  /* word-spacing: 10px; */
   font-size: 25pt;
   margin-bottom: 10px;
   margin-top: 10px;
   font-family: "Veranda", sans-serif;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  background-color: #000000;
+  text-shadow: 2px 2px #000000;
+
 }
 
 h2{
-  color: 	#011f4b;
+  color: 	#ffffff;
   text-align: center;
-  word-spacing: 10px;
+  /* word-spacing: 10px; */
   font-size: 23pt;
   margin-bottom: 10px;
   margin-top: 10px;
   font-family: "Veranda", sans-serif;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  background-color: black;
+  text-shadow: 2px 2px #000000;
 }
 
 p{
-  color: 	#03396c;
-  text-align: left;
-  word-spacing: 2px;
-  font-size: 15pt;
-  margin-left: 20%;
-  margin-right: 20%;
+  color: #ffffff;
+  text-align: center;
+  /* word-spacing: 2px; */
 
+  margin-left: auto%;
+  margin-right: auto%;
   margin-bottom: 2px;
   margin-top: 2px;
   font-family: "Veranda", sans-serif;
+  text-shadow: 2px 2px #000000;
 }
 
 #container{
@@ -46,18 +51,135 @@ p{
   text-align: center;
   margin-bottom: 10px;
   font-family: "Veranda", sans-serif;
+  /* background-color: black; */
 }
 
-
-
-#checkboxcontrolsbox{
+h3{
+  /* background-color: black; */
   text-align: center;
+  font-family: "Veranda", sans-serif;
+  font-size: 16pt;
+  text-shadow: 2px 2px #000000;
 }
 
-#checkAllButton{
+h4{
   font-family: "Veranda", sans-serif;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 2px 2px #000000;
 }
 
-#uncheckAllButton{
-  font-family: "Veranda", sans-serif;
+#chkAcousticness, #chkDanceability, #chkEnergy, #chkLiveness, #chkSpeechiness, #chkValence, #chkTempo, #chkDuration{
+  width: 15px;
+  height: 15px;
+}
+
+#acousticnessText{
+  color: #E11584;
+  text-shadow: 2px 2px #000000;
+}
+
+#danceabilityText{
+  color: #2C5499;
+  text-shadow: 2px 2px #000000;
+}
+
+#energyText{
+  color: #4F8D23;
+  text-shadow: 2px 2px #000000;
+}
+
+#livenessText{
+  color: #E8C917;
+  text-shadow: 2px 2px #000000;
+}
+
+#speechinessText{
+  color: #E05D1A;
+  text-shadow: 2px 2px #000000;
+}
+
+#valenceText{
+  color: #B9231F;
+  text-shadow: 2px 2px #000000;
+}
+
+#tempoText{
+  color: #372780;
+  text-shadow: 2px 2px #000000;
+}
+
+#durationText{
+  color: #25A032;
+  text-shadow: 2px 2px #000000;
+}
+
+#acousticnessExplanation{
+  color: #E11584;
+  text-shadow: 2px 2px #000000;
+}
+
+#danceabilityExplanation{
+  color: #2C5499;
+  text-shadow: 2px 2px #000000;
+}
+
+#energyExplanation{
+  color: #4F8D23;
+  text-shadow: 2px 2px #000000;
+}
+
+#livenessExplanation{
+  color: #E8C917;
+  text-shadow: 2px 2px #000000;
+}
+
+#speechinessExplanation{
+  color: #E05D1A;
+  text-shadow: 2px 2px #000000;
+}
+
+#valenceExplanation{
+  color: #B9231F;
+  text-shadow: 2px 2px #000000;
+}
+
+#tempoExplanation{
+  color: #372780;
+  text-shadow: 2px 2px #000000;
+}
+
+#durationExplanation{
+  color: #25A032;
+  text-shadow: 2px 2px #000000;
+}
+
+#attributesBox{
+  /* background-color: black; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#topSection{
+  /* background-color: black; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#aboutSection{
+  /* background-color: black; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+br{
+  display: block; /* makes it have a width */
+  content: ""; /* clears default height */
+  margin-top: 15px; /* change this to whatever height you want it */
+}
+
+a{
+  color: lightblue;
+  text-decoration: none;
 }
