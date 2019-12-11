@@ -1,7 +1,7 @@
 let w = 1200;
 let h = 400;
 let topBuffer = 50;
-let circleRadius = 3;
+let circleRadius = 5;
 let opacity = .2;
 
 let acousticnessColor = "#E11584";
@@ -19,12 +19,24 @@ let viz = d3.select("#container").append("svg")
   .style("background-color", "#ffffff")
 ;
 
-d3.json("top2albumSongs.json").then(gotData);
-
+d3.json("top10albumSongs.json").then(gotData);
 
 function gotData(unformattedData){
   // unformattedData = unformattedData.slice(0,100);
   incomingData = unformattedData;
+
+  var nameText = viz.append("text")
+       .attr("letter-spacing", .25)
+       .attr("x", 2000)
+       .attr("y", 2000)
+       .text("I am hidden >:D")
+  ;
+
+  var contextImage = viz.append("image")
+       .attr("x", 2000)
+       .attr("y", 2000)
+       .attr("z-index", -1)
+  ;
 
   let minDate = d3.min(incomingData, findMinDate);
   let maxDate = d3.max(incomingData, findMaxDate);
@@ -52,11 +64,7 @@ function gotData(unformattedData){
     .call(x_axis)
   ;
 
-  let groupelements = viz.selectAll(".datagroup").data(incomingData)
-    .enter()
-      .append("g")
-      .attr("class", "datagroup")
-  ;
+
 
   let timeparser = d3.timeParse("%Y-%m-%d");
 
@@ -251,13 +259,12 @@ function gotData(unformattedData){
   console.log("min duration: " + minDuration);
   console.log("max duration: " + maxDuration);
 
-  let yScaleDuration = d3.scaleLinear().domain([maxDuration, 0]).range([topBuffer+310, h]);
+  let yScaleDuration = d3.scaleLinear().domain([maxDuration, 0]).range([topBuffer+330, h]);
 
   function yPositionDuration(d){
     // console.log(d.valence);
     return yScaleDuration(d.duration_ms);
   }
-
 
   let temporaryDataArray = [];
 
@@ -265,36 +272,37 @@ function gotData(unformattedData){
     temporaryDataArray = [];
 
     incomingData.forEach(function(d){
+
       if(chkAcousticness.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleAcousticness(d.acousticness), color: "#E11584"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleAcousticness(d.acousticness), color: "#E11584", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkDanceability.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleDanceability(d.danceability), color: "#2C5499"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleDanceability(d.danceability), color: "#2C5499", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkEnergy.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleEnergy(d.energy), color: "#4F8D23"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleEnergy(d.energy), color: "#4F8D23", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkLiveness.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleLiveness(d.liveness), color: "#E8C917"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleLiveness(d.liveness), color: "#E8C917", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkSpeechiness.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleSpeechiness(d.speechiness), color: "#E05D1A"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleSpeechiness(d.speechiness), color: "#E05D1A", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkValence.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleValence(d.valence), color: "#B9231F"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleValence(d.valence), color: "#B9231F", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkTempo.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleTempo(d.tempo), color: "#372780"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleTempo(d.tempo), color: "#372780", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
 
       if(chkDuration.checked){
-        temporaryDataArray.push({song:d.name, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleDuration(d.duration), color: "#25A032"} )
+        temporaryDataArray.push({song:d.song, x:xScale(timeparser(d.weekOfRangDate)), y: yScaleDuration(d.duration_ms), color: "#25A032", uid: d.id+d.weekOfRangDate, artist: d.artist, date: d.date} )
       }
     })
 
@@ -302,15 +310,107 @@ function gotData(unformattedData){
 
   }
 
+
+  let graphGroup = viz.append("g").classed("graphGroup", true);
+
+
   function drawViz(){
     console.log(temporaryDataArray);
+
+    //temporary datagetting fucntions
+        function getTempX(d){
+          return d.x;
+        }
+
+        function getTempY(d){
+          return d.y;
+        }
+
+        function getTempColor(d){
+          return d.color;
+        }
+    //temporary datagetting fucntions
+
+    let theSituation = graphGroup.selectAll(".datapoint").data(temporaryDataArray, function(d){
+      return d.uid;
+    });
+    console.log("the full situation:", theSituation);
+
+    let enteringElements = theSituation.enter();
+    let exitingElements = theSituation.exit();
+
+    console.log("enteringElements", enteringElements);
+    console.log("exitingElements", exitingElements);
+
+    let dataGroups = enteringElements.append("g").attr("class", function(d){
+
+      return "datapoint "+d.uid;
+    }).on("mouseover", function(d){
+
+
+      nameText
+        .attr('x', 20)
+        .attr('y', 40)
+        .text(d.song + " by " + d.artist + " ("+ d.date.substring(0,4) + ")")
+        .classed('hover', true);
+      ;
+      // console.log(d.x);
+
+
+    }).on("mouseout", function(d){
+      nameText
+        .attr('x', 2000)
+        .attr('y', 2000)
+        .text(d.song)
+      ;
+
+    }).on("click", function(d){
+        let webLink = "https://www.youtube.com/results?search_query=" + d.song + "-"+ d.artist;
+        window.open(webLink, "_blank");
+    })
+    ;
+
+    dataGroups.append("circle")
+      .attr("cx", getTempX)
+      .attr("cy", getTempY)
+      .attr('fill', getTempColor)
+      .attr("r", circleRadius)
+      .style("opacity", opacity)
+    ;
+
+    exitingElements.remove();
+
+    theSituation.selectAll("circle")
+      .attr("cx", getTempX)
+      .attr("cy", getTempY)
+      .attr('fill', getTempColor)
+      .attr("r", circleRadius)
+      .style("opacity", opacity)
+    ;
+
+///////////////////////////////
+
+
+    // viz.select('#contiainer')
+    //   .selectAll("circle")
+    //   .data(temporaryDataArray)
+    //
+    //
+    //
+    //
+    //   .enter()
+    //     .append("circle")
+    //     .attr("cx", temporaryDataArray.x)
+    //     .attr("cy", temporaryDataArray.y)
+    //     .attr('fill', "black")
+    //     .attr("r", circleRadius)
+    //     .style("opacity", temporaryDataArray.color)
+    // ;
+
+    //update
+
     console.log(temporaryDataArray.length + " datapoints drawn");
 
-    let svg = d3.select('body').append('svg')
-
-    svg.selectAll('circle')
-      .data(temporaryDataArray)
-        .enter().append('circle')
   }
 
   chkAcousticness.addEventListener('change', prepareTempData);
@@ -321,6 +421,7 @@ function gotData(unformattedData){
   chkValence.addEventListener('change', prepareTempData);
   chkTempo.addEventListener('change', prepareTempData);
   chkDuration.addEventListener('change', prepareTempData);
+
 
 
   // //how to just get the year out of the date USE THIS FOR THE IMAGES
@@ -345,7 +446,7 @@ function gotData(unformattedData){
 
 
   // drawViz();
-
+  //
   // function drawViz(){
   //   chkAcousticness.addEventListener('change', function() {
   //     if(this.checked) {
@@ -462,4 +563,46 @@ function gotData(unformattedData){
   //     }
   //   });
   // }
+}
+
+let checkCounter;
+
+function testOneChecked(){
+  checkCounter = 0;
+  if(chkAcousticness.checked){
+    checkCounter++;
+  }
+  if(chkDanceability.checked){
+    checkCounter++;
+  }
+  if(chkEnergy.checked){
+    checkCounter++;
+  }
+  if(chkLiveness.checked){
+    checkCounter++;
+  }
+  if(chkSpeechiness.checked){
+    checkCounter++;
+  }
+  if(chkValence.checked){
+    checkCounter++;
+  }
+  if(chkTempo.checked){
+    checkCounter++;
+  }
+  if(chkDuration.checked){
+    checkCounter++;
+  }
+  if(checkCounter > 1){
+    console.log("false");
+    return false;
+  } else {
+    console.log("true");
+    return true;
+  }
+}
+
+
+function formatForYear(yyyymmdd){
+  yyyymmdd = new date();
 }

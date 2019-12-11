@@ -12,91 +12,82 @@
     <div id="topSection">
       <h1>The Evolution of Music</h1>
 
-        <br></br>
-
-        <div id="container">
-        </div>
-
-        <br></br>
-
-        <div id="checkboxbox">
-          <p id="acousticnessText">
-            <input type="checkbox" id="chkAcousticness">Acousticness<br>
-          </p>
-          <p id="danceabilityText">
-            <input type="checkbox" id="chkDanceability">Danceability<br>
-          </p>
-          <p id="energyText">
-            <input type="checkbox" id="chkEnergy">Energy<br>
-          </p>
-          <p id="livenessText">
-            <input type="checkbox" id="chkLiveness">Liveness<br>
-          </p>
-          <p id="speechinessText">
-            <input type="checkbox" id="chkSpeechiness">Speechiness<br>
-          </p>
-          <p id="valenceText">
-            <input type="checkbox" id="chkValence">Valence<br>
-          </p>
-          <p id="tempoText">
-            <input type="checkbox" id="chkTempo">Tempo<br>
-          </p>
-          <p id="durationText">
-            <input type="checkbox" id="chkDuration">Duration<br>
-          </p>
-
-        </div>
-      </div>
+      <div id="container"></div>
     </div>
 
     <script type="text/javascript" src="script.js"></script>
 
-    <br></br>
+    <div id="bottomSection">
+      <div id="attributesBox">
 
-    <div id="attributesBox">
-      <h2>Attributes:</h2>
-      <h3 id="acousticnessExplanation">Acousticness</h3>
-      <h4 id="description">The higher the value, the more acoustic the song is.</h4>
+        <h2>Attributes:</h2>
+        <div id="attributesInfo">
 
-      <h3 id="danceabilityExplanation">Danceability</h3>
-      <h4 id="description">The higher the value, the easier it is to dance to this song.</h4>
+          <div id="attributesFirstHalf">
+            <h3 id="acousticnessExplanation">
+              <input type="checkbox" id="chkAcousticness">Acousticness<br>
+            </h3>
+            <h4 id="description">The higher the value, the more acoustic the song.</h4>
 
-      <h3 id="energyExplanation">Energy</h3>
-      <h4 id="description">The higher the value, the more energetic the song is.</h4>
+            <h3 id="danceabilityExplanation">
+              <input type="checkbox" id="chkDanceability">Danceability<br>
+            </h3>
+            <h4 id="description">The higher the value, the easier it is to dance to this song.</h4>
 
-      <h3 id="livenessExplanation">Liveness</h3>
-      <h4 id="description">The more digitally produced a song is, the lower the value.</h4>
+            <h3 id="energyExplanation">
+              <input type="checkbox" id="chkEnergy">Energy<br>
+            </h3>
+            <h4 id="description">The higher the value, the more energetic the song.</h4>
 
-      <h3 id="speechinessExplanation">Speechiness</h3>
-      <h4 id="description">The higher the value, the more the song is based on speech.</h4>
+            <h3 id="livenessExplanation">
+              <input type="checkbox" id="chkLiveness">Liveness<br>
+            </h3>
+            <h4 id="description">The more digitally produced a song is, the lower the value.</h4>
+          </div>
+          <div id="attributesSecondHalf">
+            <h3 id="speechinessExplanation">
+              <input type="checkbox" id="chkSpeechiness">Speechiness<br>
+            </h3>
+            <h4 id="description">The higher the value, the more the song is based on speech.</h4>
 
-      <h3 id="valenceExplanation">Valence</h3>
-      <h4 id="description">The higher the value, the more positive the mood.</h4>
+            <h3 id="valenceExplanation">
+              <input type="checkbox" id="chkValence">Valence<br>
+            </h3>
+            <h4 id="description">The higher the value, the more positive the mood.</h4>
 
-      <h3 id="tempoExplanation">Tempo</h3>
-      <h4 id="description">The tempo of the song.</h4>
+            <h3 id="tempoExplanation">
+              <input type="checkbox" id="chkTempo">Tempo<br>
+            </h3>
+            <h4 id="description">The tempo of the song.</h4>
 
-      <h3 id="durationExplanation">Duration</h3>
-      <h4 id="description">The duration of the song.</h4>
-    </div>
+            <h3 id="durationExplanation">
+              <input type="checkbox" id="chkDuration">Duration<br>
+            </h3>
+            <h4 id="description">The duration of the song.</h4>
+          </div>
+        </div>
+      </div>
+      <div id="aboutSection">
+        <h2>About:</h2>
+          <h6>Check the boxes on the left to dispay the attributes on the chart</h6>
+          <h6>Hover the circles to see what song they represent. Click the circle to listen to the song.</h6>
+          <h6>The goal of this project was to identify trends in music over the last 50+ years</h6>
+          <h6>The Data for this project was taken from a dataset of 914,000 rows containing all
+            albums and tracks in the Billboard 200 from 1/5/1963 to 1/19/2019.</h6>
 
-    <br></br>
-    <br></br>
+          <h6>
+            This dataset was too large for a browser to load so the dataset was
+            condensed into the top 10 songs of every week in the original period of time.</h6>
+          <h6>
+            <a target="_blank" href="https://components.one/datasets/billboard-200/">Here</a> is a link to the dataset.
+          </h6>
+          <h6>The dataset also includes metadata for individual tracks gathered by
+            <a target="_blank" href="https://en.wikipedia.org/wiki/The_Echo_Nest">Spotify’s Echo Nest. </a>
+            These attributes are the basis for the organization of this project.
+          </h6>
+          <br></br>
 
-
-    <div id="aboutSection">
-      <h2>About:</h2>
-        <h4>The goal of this project was to identify trends in music over the last 50+ years</h4>
-        <h4>The Data for this project was taken from a dataset of 914,000 rows containing all
-          albums and tracks in the Billboard 200 from 1/5/1963 to 1/19/2019.
-          <a target="_blank" href="https://components.one/datasets/billboard-200/">Here</a> is a link to the dataset.
-          This dataset was too large for a browser to load so the dataset was
-          condensed into the top 10 songs of every week in the original period of time.
-          The dataset also includes metadata for individual tracks gathered by
-          <a target="_blank" href="https://en.wikipedia.org/wiki/The_Echo_Nest">Spotify’s Echo Nest. </a>
-          These attributes are the basis for the organization of this project.
-        </h4>
-
+      </div>
     </div>
 
   </body>
