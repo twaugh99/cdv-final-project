@@ -19,7 +19,7 @@ let viz = d3.select("#container").append("svg")
   .style("background-color", "#ffffff")
 ;
 
-d3.json("top10albumSongs.json").then(gotData);
+d3.json("top2albumSongs.json").then(gotData);
 
 function gotData(unformattedData){
   // unformattedData = unformattedData.slice(0,100);
@@ -32,11 +32,11 @@ function gotData(unformattedData){
        .text("I am hidden >:D")
   ;
 
-  var contextImage = viz.append("image")
-       .attr("x", 2000)
-       .attr("y", 2000)
-       .attr("z-index", -1)
-  ;
+  // var contextImage = viz.append("image")
+  //      .attr("x", 2000)
+  //      .attr("y", 2000)
+  //      .attr("z-index", -1)
+  // ;
 
   let minDate = d3.min(incomingData, findMinDate);
   let maxDate = d3.max(incomingData, findMaxDate);
@@ -314,6 +314,8 @@ function gotData(unformattedData){
   let graphGroup = viz.append("g").classed("graphGroup", true);
 
 
+
+
   function drawViz(){
     console.log(temporaryDataArray);
 
@@ -334,13 +336,19 @@ function gotData(unformattedData){
     let theSituation = graphGroup.selectAll(".datapoint").data(temporaryDataArray, function(d){
       return d.uid;
     });
+
     console.log("the full situation:", theSituation);
+
+
 
     let enteringElements = theSituation.enter();
     let exitingElements = theSituation.exit();
 
     console.log("enteringElements", enteringElements);
     console.log("exitingElements", exitingElements);
+
+    exitingElements.remove();
+
 
     let dataGroups = enteringElements.append("g").attr("class", function(d){
 
@@ -378,7 +386,6 @@ function gotData(unformattedData){
       .style("opacity", opacity)
     ;
 
-    exitingElements.remove();
 
     theSituation.selectAll("circle")
       .attr("cx", getTempX)
@@ -413,6 +420,7 @@ function gotData(unformattedData){
 
   }
 
+
   chkAcousticness.addEventListener('change', prepareTempData);
   chkDanceability.addEventListener('change', prepareTempData);
   chkEnergy.addEventListener('change', prepareTempData);
@@ -421,6 +429,8 @@ function gotData(unformattedData){
   chkValence.addEventListener('change', prepareTempData);
   chkTempo.addEventListener('change', prepareTempData);
   chkDuration.addEventListener('change', prepareTempData);
+
+
 
 
 
@@ -565,44 +575,45 @@ function gotData(unformattedData){
   // }
 }
 
-let checkCounter;
+// let checkCounter;
+//
+// function testOneChecked(){
+//   checkCounter = 0;
+//   if(chkAcousticness.checked){
+//     checkCounter++;
+//   }
+//   if(chkDanceability.checked){
+//     checkCounter++;
+//   }
+//   if(chkEnergy.checked){
+//     checkCounter++;
+//   }
+//   if(chkLiveness.checked){
+//     checkCounter++;
+//   }
+//   if(chkSpeechiness.checked){
+//     checkCounter++;
+//   }
+//   if(chkValence.checked){
+//     checkCounter++;
+//   }
+//   if(chkTempo.checked){
+//     checkCounter++;
+//   }
+//   if(chkDuration.checked){
+//     checkCounter++;
+//   }
+//   if(checkCounter > 1){
+//     console.log("false");
+//     return false;
+//   } else {
+//     console.log("true");
+//     return true;
+//   }
+// }
+//
 
-function testOneChecked(){
-  checkCounter = 0;
-  if(chkAcousticness.checked){
-    checkCounter++;
-  }
-  if(chkDanceability.checked){
-    checkCounter++;
-  }
-  if(chkEnergy.checked){
-    checkCounter++;
-  }
-  if(chkLiveness.checked){
-    checkCounter++;
-  }
-  if(chkSpeechiness.checked){
-    checkCounter++;
-  }
-  if(chkValence.checked){
-    checkCounter++;
-  }
-  if(chkTempo.checked){
-    checkCounter++;
-  }
-  if(chkDuration.checked){
-    checkCounter++;
-  }
-  if(checkCounter > 1){
-    console.log("false");
-    return false;
-  } else {
-    console.log("true");
-    return true;
-  }
-}
-
-
-function formatForYear(yyyymmdd){
-  yyyymmdd = new date();
-}
+//
+// function formatForYear(yyyymmdd){
+//   yyyymmdd = new date();
+// }
